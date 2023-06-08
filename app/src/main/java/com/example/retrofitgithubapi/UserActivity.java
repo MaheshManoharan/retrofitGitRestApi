@@ -3,11 +3,13 @@ package com.example.retrofitgithubapi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.loader.content.AsyncTaskLoader;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.Image;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -60,11 +62,19 @@ public class UserActivity extends AppCompatActivity {
         extras = getIntent().getExtras();
         newString = extras.getString("STRING_I_NEED");
 
+        System.out.println("hi");
         System.out.println(newString);
 
         loadData();
 
 
+    }
+
+    public void loadOwnRepos(View view)
+    {
+        Intent intent = new Intent(UserActivity.this, Repositories.class);
+        intent.putExtra("username", newString);
+        startActivity(intent);
     }
 
     public void loadData() {
